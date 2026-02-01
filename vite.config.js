@@ -14,5 +14,9 @@ export default defineConfig({
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
+        host: 'laravelchat',
+        port: 5173,
+        cors: true,
+        origin: 'http://laravelchat:5173',
     },
 });
