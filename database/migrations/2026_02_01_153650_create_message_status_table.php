@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('message_status', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('chat_id')->constrained();
+            $table->unique(['message_id', 'user_id']);
+            $table->foreignId('chat_id')->constrained('chats');
             $table->foreignId('message_id')->constrained('messages');
             $table->foreignId('user_id')->constrained('users');
             $table->boolean('is_read')->default(false);
