@@ -1,5 +1,10 @@
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue";
+
+const props = defineProps([
+   'users',
+]);
+
 </script>
 
 <template>
@@ -14,12 +19,12 @@ import MainLayout from "@/Layouts/MainLayout.vue";
                 </div>
 
                 <div class="flex-1 overflow-y-auto">
-                    <div v-for="i in 5" :key="i" class="flex items-center p-4 hover:bg-indigo-50 cursor-pointer border-b border-gray-100 transition">
+                    <div v-for="user in users.data" :key="user.id" class="flex items-center p-4 hover:bg-indigo-50 cursor-pointer border-b border-gray-100 transition">
                         <div class="w-12 h-12 bg-indigo-200 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-indigo-700">
-                            U{{ i }}
+                            {{ user.name.charAt(0).toUpperCase() }}
                         </div>
                         <div class="ml-4 overflow-hidden">
-                            <p class="text-sm font-medium text-gray-900">User Name {{ i }}</p>
+                            <p class="text-sm font-medium text-gray-900">{{ user.name }}</p>
                             <p class="text-xs text-gray-500 truncate">Последнее сообщение из чата...</p>
                         </div>
                     </div>
